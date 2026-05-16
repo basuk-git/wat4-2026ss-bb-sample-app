@@ -72,11 +72,19 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: {
+  webServer: [
+  {
     command: 'npm run start',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },
+  {
+    command: 'cd ../backend && npm run start',
+    url: 'http://127.0.0.1:5000/counter',
+    reuseExistingServer: !process.env.CI,
+    timeout: 120_000,
+  },
+],
 });
 
